@@ -295,8 +295,8 @@ export default function UsersManagementPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Users Management</h1>
-              <p className="text-sm text-gray-600 mt-1">Manage user accounts and permissions</p>
+              <h1 className="text-2xl font-bold text-gray-900">Admin Management</h1>
+              <p className="text-sm text-gray-600 mt-1">Manage admin accounts and permissions</p>
             </div>
           </div>
 
@@ -305,7 +305,7 @@ export default function UsersManagementPage() {
             <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-blue-600 font-medium">Total Users</p>
+                  <p className="text-sm text-blue-600 font-medium">Total Admin</p>
                   <p className="text-2xl font-bold text-blue-700 mt-1">{stats.total}</p>
                 </div>
                 <UserCheck className="w-8 h-8 text-blue-600" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsUpDown } from "lucide-react";
+import {ChevronsUpDown, LogOut} from "lucide-react";
 import {
   Avatar,
   AvatarFallback,
@@ -9,6 +9,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -18,13 +19,21 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import {useRouter} from "next/navigation";
+import React from "react";
 
 export function NavUser() {
+  const router = useRouter();
+
   const displayUser = {
     name: "Super Admin",
     email: "superadmin@email.com",
     avatar: "/fallback-avatar.jpg",
     initials: "SA",
+  };
+
+  const handleLogout = () => {
+    router.push("/login");
   };
 
   return (
@@ -83,8 +92,14 @@ export function NavUser() {
                 </div>
               </div>
             </DropdownMenuLabel>
-
             <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={handleLogout}
+              className="cursor-pointer"
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Log out
+            </DropdownMenuItem>
             <div className="text-xs text-center py-2 text-muted-foreground">
               Admin Panel
             </div>
