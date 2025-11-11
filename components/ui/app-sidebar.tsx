@@ -13,7 +13,6 @@ import { NavUser } from "@/components/ui/nav-user";
 import { TeamSwitcher } from "@/components/ui/team-switcher";
 import {
   Home,
-  Users,
 } from "lucide-react";
 
 export const navData = [
@@ -22,11 +21,6 @@ export const navData = [
     url: "/dashboard",
     icon: Home,
   },
-  {
-    title: "Users",
-    url: "/users",
-    icon: Users,
-  }
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

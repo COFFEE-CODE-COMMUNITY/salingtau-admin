@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a9bcc534-54c2-4188-b088-5e1fddb8dd81" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(admin)/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(admin)/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/nav-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/nav-user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(admin)/users/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/app-sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +68,11 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\salingtau-admin\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -88,7 +99,14 @@
       <workItem from="1762518150047" duration="8476000" />
       <workItem from="1762584919098" duration="5117000" />
       <workItem from="1762600432691" duration="583000" />
-      <workItem from="1762601214339" duration="439000" />
+      <workItem from="1762601214339" duration="624000" />
+      <workItem from="1762605412108" duration="317000" />
+      <workItem from="1762821943925" duration="3000" />
+      <workItem from="1762855804166" duration="77000" />
+      <workItem from="1762857751369" duration="1392000" />
+      <workItem from="1762859502382" duration="3771000" />
+      <workItem from="1762865549040" duration="3240000" />
+      <workItem from="1762873806574" duration="2077000" />
     </task>
     <servers />
   </component>
