@@ -6,7 +6,7 @@ const API_KEY = process.env.API_KEY || "";
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { courseId: string } }
+  { params }: { params: Promise<{ courseId: string }> }
 ) {
   try {
     // Verifikasi authentication
@@ -19,7 +19,7 @@ export async function PATCH(
       );
     }
 
-    const courseId = params.courseId;
+    const { courseId } = await params;
 
     // Parse request body
     const body = await request.json();
