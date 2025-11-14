@@ -7,7 +7,7 @@ export async function main() {
   console.log('🌱 Seeding database...');
 
   // Hash password admin123
-  const hashedPassword = await bcrypt.hash('admin123', 10);
+  const hashedPassword = await bcrypt.hash('admin123@email.com', 10);
 
   // Cek apakah sudah ada admin
   const existingAdmin = await prisma.admin.findFirst({

@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9bcc534-54c2-4188-b088-5e1fddb8dd81" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/db55e0e1-bdce-4624-ac92-06316985076b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/db55e0e1-bdce-4624-ac92-06316985076b.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/db55e0e1-bdce-4624-ac92-06316985076b/storage_v2/_src_/database/salingtau_admin.NM2-XQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/db55e0e1-bdce-4624-ac92-06316985076b/storage_v2/_src_/database/salingtau_admin.NM2-XQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(admin)/users/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/app-sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(admin)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(admin)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/login/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/login/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma.config.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/seed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +25,7 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -77,6 +78,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\salingtau-admin\prisma" />
+      <recent name="D:\salingtau-admin\app\api\v1\courses" />
       <recent name="D:\salingtau-admin\app\admin" />
     </key>
   </component>
@@ -107,6 +110,13 @@
       <workItem from="1762859502382" duration="3771000" />
       <workItem from="1762865549040" duration="3240000" />
       <workItem from="1762873806574" duration="2077000" />
+      <workItem from="1762902277413" duration="79000" />
+      <workItem from="1762938500779" duration="2771000" />
+      <workItem from="1762970667314" duration="5000" />
+      <workItem from="1763059670714" duration="557000" />
+      <workItem from="1763088894954" duration="3110000" />
+      <workItem from="1763092352642" duration="2207000" />
+      <workItem from="1763094738000" duration="819000" />
     </task>
     <servers />
   </component>

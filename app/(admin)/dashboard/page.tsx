@@ -2,7 +2,35 @@
 
 import React, { useState, useEffect } from 'react';
 import { Check, X, Eye, Clock, FileText, Video, File, ExternalLink, ChevronDown, ChevronUp, Search } from 'lucide-react';
-import {Course, mockDatabase} from "@/utils/mock-course";
+
+// Type definition untuk Course
+interface Lecture {
+  id: string;
+  title: string;
+  type: 'video' | 'article' | 'file' | 'external';
+  duration?: string;
+}
+
+interface Section {
+  id: string;
+  title: string;
+  lectures: Lecture[];
+}
+
+interface Course {
+  id: string;
+  title: string;
+  description: string;
+  instructor: string;
+  category: string;
+  price: number;
+  language: string;
+  thumbnail: string;
+  status: string;
+  submittedAt: string;
+  moderationNotes: string;
+  sections: Section[];
+}
 
 export default function DashboardPage() {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -10,8 +38,9 @@ export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Simulate fetching courses from database
+  // Fetch courses from API when component mounts
   useEffect(() => {
     fetchPendingCourses();
   }, []);
@@ -19,18 +48,34 @@ export default function DashboardPage() {
   const fetchPendingCourses = async () => {
     try {
       setLoading(true);
+      setError(null);
 
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 800));
+      // Call Next.js API route yang akan forward ke backend NestJS
+      const response = await fetch('/api/v1/courses', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
 
-      // Filter courses with pending_review status
-      const pendingCourses = mockDatabase.filter(
-        course => course.status === 'pending_review'
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to fetch courses');
+      }
+
+      const data = await response.json();
+
+      // Filter hanya courses dengan status pending_review
+      const allCourses = Array.isArray(data) ? data : data.courses || [];
+      const pendingCourses = allCourses.filter(
+        (course: Course) => course.status === 'pending_review'
       );
 
       setCourses(pendingCourses);
     } catch (error) {
       console.error('Error fetching courses:', error);
+      setError(error instanceof Error ? error.message : 'Failed to load courses');
     } finally {
       setLoading(false);
     }
@@ -45,26 +90,32 @@ export default function DashboardPage() {
 
   const handleApprove = async (courseId: string) => {
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // PATCH ke /api/v1/courses/[courseId] dengan status: "published"
+      const response = await fetch(`/api/v1/courses/${courseId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          status: 'published',
+          moderationNotes: selectedCourse?.moderationNotes || ''
+        })
+      });
 
-      // Find course index in mockDatabase
-      const courseIndex = mockDatabase.findIndex(c => c.id === courseId);
-
-      if (courseIndex !== -1) {
-        // Update status to 'published'
-        mockDatabase[courseIndex].status = 'published';
-        mockDatabase[courseIndex].moderationNotes = selectedCourse?.moderationNotes || '';
-
-        // Remove from local state
-        setCourses(courses.filter(c => c.id !== courseId));
-        setSelectedCourse(null);
-
-        alert('✅ Course approved and published successfully!');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to approve course');
       }
+
+      // Remove from local state
+      setCourses(courses.filter(c => c.id !== courseId));
+      setSelectedCourse(null);
+
+      alert('✅ Course approved and published successfully!');
     } catch (error) {
       console.error('Error approving course:', error);
-      alert('❌ Failed to approve course');
+      alert(`❌ Failed to approve course: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 
@@ -75,26 +126,32 @@ export default function DashboardPage() {
     }
 
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // PATCH ke /api/v1/courses/[courseId] dengan status: "archived"
+      const response = await fetch(`/api/v1/courses/${courseId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          status: 'archived',
+          moderationNotes: notes
+        })
+      });
 
-      // Find course index in mockDatabase
-      const courseIndex = mockDatabase.findIndex(c => c.id === courseId);
-
-      if (courseIndex !== -1) {
-        // Update status to 'draft' and save notes
-        mockDatabase[courseIndex].status = 'draft';
-        mockDatabase[courseIndex].moderationNotes = notes;
-
-        // Remove from local state
-        setCourses(courses.filter(c => c.id !== courseId));
-        setSelectedCourse(null);
-
-        alert('✅ Course rejected. Instructor will be notified with your feedback.');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to reject course');
       }
+
+      // Remove from local state
+      setCourses(courses.filter(c => c.id !== courseId));
+      setSelectedCourse(null);
+
+      alert('✅ Course rejected. Instructor will be notified with your feedback.');
     } catch (error) {
       console.error('Error rejecting course:', error);
-      alert('❌ Failed to reject course');
+      alert(`❌ Failed to reject course: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 
@@ -120,6 +177,24 @@ export default function DashboardPage() {
         <div className="text-center">
           <Clock className="w-12 h-12 animate-spin text-blue-500 mx-auto mb-4" />
           <p className="text-gray-600">Loading courses...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center max-w-md">
+          <X className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">Failed to Load Courses</h3>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <button
+            onClick={fetchPendingCourses}
+            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Try Again
+          </button>
         </div>
       </div>
     );
